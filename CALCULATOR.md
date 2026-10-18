@@ -10,11 +10,12 @@ The calculator is the first working subsystem in the larger Minecraft Redstone c
 | --- | --- |
 | Addition | Adds two 8-bit numbers |
 | Subtraction | Subtracts two 8-bit numbers using two's complement in the ALU |
+| Multiply by 2 | Shifts the bits left |
+| Divide by 2 | Shifts the bits right |
 | Result handling | Handles a 9-bit result, including negative results |
 | Binary-to-BCD conversion | Converts binary output to BCD; the specific converter design still needs to be identified |
 | Display output | Converts BCD/binary values for seven-segment output |
-| Multiply by 2 | Shifts the bits left |
-| Divide by 2 | Shifts the bits right |
+
 
 ## How the calculator is organized
 
