@@ -1,27 +1,22 @@
 # Calculator Demonstration
 
-[Calculator description](../README.md) · [Project overview](../../README.md)
+[Calculator documentation](../README.md) · [Project overview](../../README.md)
 
-[Watch on YouTube](https://youtu.be/XQKjd9Awp-k)
+[Watch the demonstration on YouTube](https://youtu.be/XQKjd9Awp-k)
 
-The uploaded recording, MinecraftCalculatorDemonstration.mp4 (approximately 1 minute 47 seconds), has been visually reviewed using frames across its duration and closer inspection of the calculation displays and controls. It shows input and operation changes, binary and decimal results, and a tour of the internal circuitry.
+This silent demonstration shows the input levers and operation controls, binary and decimal answers, and a tour of the internal Redstone circuitry.
 
-## Observed examples
+## Examples in the video
 
-Times are approximate and refer to the uploaded recording. Leading zeros below match the display.
-
-| Time | Observation |
+| Approximate time | Displayed result |
 | --- | --- |
-| 0:33 | Negative output displayed as -010 with multiplication enabled |
-| 0:41 | Negative fractional output displayed as -002.5 with division enabled |
-| 0:54–0:56 | Both input banks set to 255; addition output is binary 510 and decimal 510 |
-| 1:00 | Decimal output 255 with division applied to the preceding addition result |
-| 1:06 | Decimal output 1020, with the tenth magnitude bit active, after multiplication of the 510 result |
-| Approximately 1:09–1:40 | Views of the internal Redstone circuits and signal paths |
+| 0:33 | `−010` with multiplication enabled |
+| 0:41 | `−002.5`, showing a negative result with a half-value output |
+| 0:54–0:56 | `510` from adding two inputs of 255 |
+| 1:00 | `255` after dividing the 510 result by 2 |
+| 1:06 | `1020` after multiplying the 510 result by 2 |
+| 1:09–1:40 | Tour of the internal circuitry |
 
-The maximum addition and doubled result agree with 255 + 255 = 510 and 510 × 2 = 1020. The recording also provides an example of a negative result with a half-value output. These demonstrations are sufficient evidence for the examples shown; repeating them solely to create separate test records is unnecessary.
+The largest result shown is `(255 + 255) × 2 = 1020`, which uses the tenth magnitude bit and the thousands position on the decimal display. The negative fractional example shows the separate minus-sign and `.5` outputs.
 
-- [x] Publish and link the demonstration
-- [x] Review the uploaded recording and document visible examples
-
-Further boundary testing is optional future validation. This recording does not claim exhaustive coverage of every input and switch combination. Detailed wiring annotations can wait while the build and screenshots are changing.
+The hundreds, tens, and ones positions retain leading zeros, so a result of −2.5 appears as `−002.5`.
