@@ -22,7 +22,7 @@ The shift controls act on the addition or subtraction result. Enabling both canc
 
 Facing the panel, input A is on the left and B is on the right. Subtraction calculates `A − B`. Both inputs are nonnegative; negative answers are produced by subtraction.
 
-See [CALCULATOR.md](CALCULATOR.md) for a closer look at the calculator and the details that still need to be documented.
+See the [calculator README](calculator/README.md) for its operation and circuit design, and the [component library](components/README.md) for standalone gates and circuits.
 
 ## Project status
 
@@ -38,22 +38,20 @@ The calculator features above are working. The full computer and CPU are planned
 
 ## Gallery
 
-![Front of the working calculator, showing its display, binary output, and input levers](images/calculator-front.png)
+![Front of the working calculator, showing its display, binary output, and input levers](calculator/images/calculator-front.png)
 
 The working calculator's front panel. The two binary inputs sit along the bottom, with three operation switches between them. The binary result and negative indicator sit above the controls, below the large display.
 
-> **Video placeholder:** Add a link to a short demonstration of the build here.
-
-<!-- Example:
-[Watch the project demonstration](YOUR_VIDEO_URL)
--->
+A silent demonstration has been recorded. See the [video folder](calculator/videos/README.md) for upload status; the recording is not yet included in this bundle.
 
 ## Repository contents
 
-- [`CALCULATOR.md`](CALCULATOR.md) — working calculator subsystem
-- [`COMPONENTS.md`](COMPONENTS.md) — component screenshots and their roles in the assembled calculator
+- [`calculator/README.md`](calculator/README.md) — working calculator subsystem
+- [`calculator/COMPONENTS.md`](calculator/COMPONENTS.md) — components installed in the assembled calculator
+- [`components/README.md`](components/README.md) — library for standalone gates and reusable circuits
 - Minecraft world download — the project world, if included in this repository
-- `images/` — screenshots of the calculator and double dabble converter
+- `calculator/images/` — calculator screenshots
+- [`calculator/videos/`](calculator/videos/README.md) — demonstration video location and upload status
 
 ## Running the world
 
