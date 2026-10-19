@@ -31,6 +31,9 @@ The ALU performs addition and subtraction. Subtraction uses two's complement. Re
 ![Annotated view of the calculator ALU](images/calculator-alu.png)
 -->
 
+### Bit-shift operations
+
+A left shift multiplies the value by 2, and a right shift divides it by 2. The behavior at the bit limits—including overflow, discarded bits, and signed values—still needs to be tested and documented.
 ### Binary-to-BCD conversion
 
 The calculator uses a binary-to-BCD converter before sending values to the display system. The exact converter method or circuit has not yet been recorded.
@@ -51,9 +54,6 @@ The output circuitry converts the result into the signals needed by the seven-se
 ![Calculator result on the seven-segment display](images/seven-segment-output.png)
 -->
 
-### Bit-shift operations
-
-A left shift multiplies the value by 2, and a right shift divides it by 2. The behavior at the bit limits—including overflow, discarded bits, and signed values—still needs to be tested and documented.
 
 ## Suggested demonstrations
 
