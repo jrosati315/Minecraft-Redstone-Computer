@@ -42,28 +42,44 @@ The calculator features above are working. The full computer and CPU are planned
 
 The working calculator's front panel. The two binary inputs sit along the bottom, with three operation switches between them. The binary result and negative indicator sit above the controls, below the large display.
 
-A silent demonstration has been recorded. See the [video folder](calculator/videos/README.md) for upload status; the recording is not yet included in this bundle.
+A silent demonstration is available on YouTube: [Watch the calculator demonstration](https://youtu.be/XQKjd9Awp-k). See the [video notes](calculator/videos/README.md) for review status.
 
 ## Repository contents
 
 - [`calculator/README.md`](calculator/README.md) — working calculator subsystem
 - [`calculator/COMPONENTS.md`](calculator/COMPONENTS.md) — components installed in the assembled calculator
 - [`components/README.md`](components/README.md) — library for standalone gates and reusable circuits
-- Minecraft world download — the project world, if included in this repository
+- [Minecraft world download](https://github.com/rosatij1/Minecraft-Redstone-Computer/releases/tag/v0.1.0) — tested vanilla Java Edition 1.18.2 world
 - `calculator/images/` — calculator screenshots
 - [`calculator/videos/`](calculator/videos/README.md) — demonstration video location and upload status
 
 ## Running the world
 
-The build uses Minecraft **1.18.2**. WorldEdit is used as a building tool and is the only mod reported as used during construction. Whether it is needed to run the finished world has not yet been confirmed.
+The build uses **Minecraft Java Edition 1.18.2**. The builder tested a copy of the world in vanilla 1.18.2 and confirmed that it works without mods.
 
-### TODO
+WorldEdit was used to place vanilla blocks during construction. Carpet was used to speed up game ticks and allow movement through walls while building and testing. Neither mod is required to run the tested world. At normal tick speed, allow the calculator's signals to settle before reading the output.
 
-- [ ] Confirm the Minecraft edition
-- [ ] Confirm whether the world runs without WorldEdit and document any required resource packs or settings
-- [ ] Add the world-download filename and installation instructions
+### Installing the world download
+
+1. Download [redstone-computer-v0.1.0-mc1.18.2.zip](https://github.com/rosatij1/Minecraft-Redstone-Computer/releases/download/v0.1.0/redstone-computer-v0.1.0-mc1.18.2.zip) from the [v0.1.0 release](https://github.com/rosatij1/Minecraft-Redstone-Computer/releases/tag/v0.1.0).
+2. Extract the ZIP.
+3. Find the extracted world folder containing `level.dat`. Copy that entire folder, including its subfolders.
+4. With Minecraft closed, place the world folder in your Java Edition installation's `saves` folder. For the default Windows installation, press Windows+R and enter `%appdata%\.minecraft\saves`. Custom launcher installations may use a different game directory.
+5. Launch vanilla Minecraft Java Edition 1.18.2, choose Singleplayer, and open the imported world.
+6. Use the input levers and operation switches described in the [calculator instructions](calculator/README.md#front-panel-and-operation). Allow the output to settle before reading it.
+
+The calculator's coordinates or directions from the starting position still need to be documented.
+
+### Documentation status
+
+- [x] Confirm the Minecraft edition: Java Edition 1.18.2
+- [x] Confirm the world runs without WorldEdit or Carpet: builder-tested in vanilla 1.18.2
+- [ ] Document any required resource packs or settings
+- [x] Link the published calculator demonstration
+- [x] Add world installation instructions
+- [x] Link the published v0.1.0 release and its world ZIP; attachment verified on GitHub
 - [ ] Explain where the computer is located after the world loads
-- [ ] Add recorded example calculations
+- [x] Add reviewed example results in the [video notes](calculator/videos/README.md)
 
 ## About this repository
 
