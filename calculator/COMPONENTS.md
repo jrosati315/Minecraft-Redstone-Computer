@@ -12,8 +12,6 @@ The blue wiring carries the second input, B, into the conditional inversion circ
 
 If the result is negative, the second adder converts it to a positive magnitude by inverting it and adding 1. The magnitude-selection multiplexer chooses the second result for negative subtraction answers and the first result otherwise. This stage comes before the multiply/divide multiplexers.
 
-TODO: Add labels marking both adders, their carry connections, and the magnitude-selection multiplexer.
-
 ## Negative-result detector in the calculator
 
 ![Close view of the carry-out and subtraction-control wiring used by the negative detector](images/negative-detector.png)
@@ -57,8 +55,6 @@ The front panel brings the inputs, operation controls, binary output, sign indic
 
 The fractional bit directly enables a fixed `.5` display. When the bit is off, the fractional display is blank.
 
-TODO: Add paired screenshots showing input settings and settled outputs for addition, negative subtraction, odd-result division, and both shift controls enabled.
-
 ## Display design credit
 
-The builder credits Mattbatwings' [display-design tutorial at 20:25](https://www.youtube.com/watch?v=mDLfUbAK9T0&t=1225s) as the reference for the binary-to-decimal display design.
+I used Mattbatwings' [display-design tutorial at 20:25](https://www.youtube.com/watch?v=mDLfUbAK9T0&t=1225s) as a reference for the binary-to-decimal display design.

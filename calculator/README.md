@@ -2,7 +2,7 @@
 
 [Back to the main project README](../README.md) · [Standalone component library](../components/README.md)
 
-[Watch the calculator demonstration](https://youtu.be/XQKjd9Awp-k) · [Video notes and review status](videos/README.md)
+[Watch the calculator demonstration](https://youtu.be/XQKjd9Awp-k) · [Video and example results](videos/README.md)
 
 The calculator is a working subsystem in the larger Minecraft Redstone computer project. It accepts two unsigned 8-bit numbers, each from 0 to 255, entered manually in binary. It performs arithmetic and bit-shift operations and shows the result through binary indicators and a seven-segment display.
 
@@ -44,7 +44,7 @@ Here, on means the lever's powered state. With both shift controls on, multiplic
 
 Above the controls, the binary output includes a negative indicator. The large seven-segment display sits at the top of the panel.
 
-The calculator uses **combinational logic**. Changing an input or operation switch automatically changes the output after the Redstone signals propagate and settle. There is no clock or separate button to trigger a calculation. The settling time has not yet been measured.
+The calculator uses **combinational logic**. Changing an input or operation switch automatically changes the output after the Redstone signals propagate and settle. There is no clock or separate button to trigger a calculation. Allow the signals to settle before reading the result.
 
 To use the calculator, enter A and B in binary with their lever banks, select addition or subtraction, and set the shift controls as needed. Allow the output to settle before reading the result.
 
@@ -87,7 +87,7 @@ The integer magnitude has 10 bits to accommodate multiplication by 2. In the div
 
 ### Output representation
 
-The builder confirms that the final output consists of 12 bits total: 10 whole-number magnitude bits, one negative-sign bit, and one half-value bit:
+The final output consists of 12 bits total: 10 whole-number magnitude bits, one negative-sign bit, and one half-value bit:
 
 | Field | Signals | Meaning |
 | --- | --- | --- |
@@ -97,7 +97,7 @@ The builder confirms that the final output consists of 12 bits total: 10 whole-n
 
 The sign is separate from the magnitude and fraction. Although subtraction uses two's complement internally, the final output is a sign-and-magnitude representation with one fractional bit. The 12 signals are therefore not a single 12-bit two's-complement integer.
 
-For example, dividing a magnitude of 5 by 2 produces a whole-number magnitude of 2 and a half-value bit of 1, representing 2.5. The reviewed demonstration shows a negative fractional output of -002.5 at approximately 0:41; see the [video observations](videos/README.md).
+For example, dividing a magnitude of 5 by 2 produces a whole-number magnitude of 2 and a half-value bit of 1, representing 2.5. The demonstration shows a negative fractional output of -002.5 at approximately 0:41; see the [video examples](videos/README.md).
 
 ### Binary-to-BCD conversion
 
@@ -105,7 +105,7 @@ The calculator uses the **double dabble**, or shift-and-add-3, algorithm to conv
 
 During the conversion, the binary value is shifted through a sequence of stages. Before each shift, any BCD digit that is 5 or greater has 3 added to it. Repeating that process produces the decimal digits in BCD form. The separate sign and half-value signals bypass this conversion.
 
-The separate layout model and standalone converter are documented on the [converter page](../components/double-dabble/README.md). A dedicated close-up of the converter installed in the calculator can be added when available.
+The separate layout model and standalone converter are documented on the [converter page](../components/double-dabble/README.md).
 
 ### Seven-segment output
 
@@ -113,7 +113,7 @@ Each of the hundreds, tens, and ones digits has its own decoding circuitry. The 
 
 ![Digit-decoding and segment circuitry installed behind the calculator display](images/display-installed-rear.png)
 
-The thousands position has a simplified driver: it shows a fixed 1 when needed and otherwise stays blank. This accommodates results above 999, such as the mathematically expected maximum of `(255 + 255) × 2 = 1020`; the reviewed demonstration shows 1020 at approximately 1:06, following the 510 addition result. See the [video observations](videos/README.md).
+The thousands position has a simplified driver: it shows a fixed 1 when needed and otherwise stays blank. This accommodates results above 999, such as the mathematically expected maximum of `(255 + 255) × 2 = 1020`; the demonstration shows 1020 at approximately 1:06, following the 510 addition result. See the [video examples](videos/README.md).
 
 The hundreds, tens, and ones positions retain leading zeros. With the thousands position blank, five therefore appears as `005` preceded by a blank position, rather than four illuminated digits reading `0005`.
 
@@ -125,41 +125,10 @@ The fractional output uses a fixed `.5` pattern controlled directly by the half-
 
 See the [installed display gallery](COMPONENTS.md#display-circuitry-in-the-assembled-calculator) for another view of the implemented circuitry. The separate demonstration decoder is on the [display component page](../components/seven-segment-display/README.md).
 
-## Optional future demonstrations
-
-The existing [demonstration and review notes](videos/README.md) already show several of these features. Additional examples below are optional improvements as the project develops:
-
-- A basic addition example
-- A subtraction with a positive result
-- A subtraction with a negative result
-- A calculation that uses the ninth result bit
-- Multiplication by 2 with a left shift
-- Division of an odd result by 2, showing the `.5` output
-- Both shift controls enabled, showing that the original result is preserved
-- A result that uses the tenth output bit after multiplication
-- The input, conversion, and display stages in one continuous demonstration
-
 ## Design references and credits
 
-Mattbatwings' YouTube videos were a main reference during the build, including for some decoder designs. The builder identifies [this display-design tutorial, linked at 20:25](https://www.youtube.com/watch?v=mDLfUbAK9T0&t=1225s), as the reference for the binary-to-decimal display design. Additional circuit-specific sources can be added as they are identified.
-
-## Documentation status and optional future improvements
-
-The demonstration and vanilla compatibility check are complete. Unchecked items below are future improvements, not requirements for sharing the current project. Wiring labels and replacement screenshots are deferred while the build changes.
-
-- [ ] Document the double dabble stage arrangement and propagation delay
-- [ ] Record intermediate adder bit widths and sign wiring to each display
-- [ ] Label each front-panel output indicator with its bit weight or role
-- [ ] Test and document overflow and underflow behavior
-- [ ] Test and document bit shifts for signed values and values at the 8-bit limit
-- [ ] Credit any other reused circuit designs as their sources are identified
-- [ ] Add labeled screenshots of each major circuit
-- [x] Document example outputs from the recording, including 510 and 1020 matching the expected arithmetic
-- [x] Publish and link the recorded silent demonstration on YouTube
-- [x] Review the demonstration and document visible results in the video notes
-- [x] Confirm the final output width: 10 magnitude bits, one sign bit, and one half-value bit
-- [x] Confirm operation without mods: builder-tested in vanilla Java Edition 1.18.2
+I used Mattbatwings' YouTube videos as a main reference during the build, including for some decoder designs. [This display-design tutorial at 20:25](https://www.youtube.com/watch?v=mDLfUbAK9T0&t=1225s) was my reference for the binary-to-decimal display design.
 
 ## Relationship to the full computer
 
-This calculator is a working subsystem and a foundation for the planned computer. The full CPU architecture, instruction set, memory, control logic, and other computer specifications have not been confirmed and should be documented as they are designed and tested.
+This calculator is a working subsystem and a foundation for the planned computer. The CPU architecture, instruction set, memory, and control logic are part of the next stage of development.
