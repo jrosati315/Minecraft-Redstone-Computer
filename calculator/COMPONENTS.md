@@ -2,21 +2,7 @@
 
 [Project overview](../README.md) · [Calculator description](README.md) · [Standalone component library](../components/README.md)
 
-These screenshots show standalone component examples and circuitry inside the assembled calculator. They document the build's structure; example input/output tests can be added alongside them as they are recorded.
-
-## Standalone four-bit ripple-carry adder
-
-![Standalone four-bit adder built from orange blocks](images/four-bit-adder.png)
-
-This four-bit example shows the ripple-carry adder design used in the calculator. The carry from each bit feeds the next more significant bit. The standalone example illustrates the component; the calculator itself accepts two eight-bit inputs.
-
-## Standalone multiplexer
-
-![Standalone multiplexer with colored input paths and control wiring](images/multiplexer.png)
-
-A multiplexer selects one of two input paths according to a control signal. The calculator uses multiplexers to select the appropriate arithmetic magnitude and to choose shifted or unshifted paths for multiplication and division by 2.
-
-TODO: Label the two data inputs, select signal, and output in this component view.
+These screenshots show components installed in the assembled calculator and its front panel. Separate demonstration circuits and layout models are kept in the [standalone component library](../components/README.md).
 
 ## Two-adder arithmetic stage in the calculator
 
@@ -46,26 +32,6 @@ The green path carries the first adder's carry-out. The yellow path carries the 
 During subtraction, a missing carry-out indicates a borrow: A is smaller than B. This enables the negative sign and selects the second adder's magnitude. Carry-out here is an unsigned carry/borrow indication, rather than signed overflow.
 
 For `3 − 8`, carry-out is off, the negative signal is on, and the selected magnitude is 5.
-
-## Double dabble converter: layout and built module
-
-![Simplified layout of the double dabble converter](images/double-dabble-layout.png)
-
-The simplified layout shows the repeated conversion stages. The purple bars represent the shift-and-conditional-add-3 structure.
-
-![Fully built standalone double dabble converter](images/double-dabble-built.png)
-
-The corresponding built converter is shown separately from the calculator. See [binary-to-BCD conversion](README.md#binary-to-bcd-conversion) for the algorithm description.
-
-## Digit decoder and seven-segment wiring
-
-![Standalone digit decoder viewed from the display side](images/display-decoder-front.png)
-
-![Standalone digit decoder viewed from the input and wiring side](images/display-decoder-back.png)
-
-These two views show the same standalone digit-display component. The purple circuitry decodes four BCD bits into one of ten selections, 0 through 9. The white wiring converts that selection into the required seven-segment pattern. The hundreds, tens, and ones positions each use their own decoder.
-
-The thousands position uses a simplified driver to show 1 or remain blank. The lower three positions retain leading zeros. The minus sign and `.5` are separate fixed patterns enabled by their respective signals.
 
 ## Display circuitry in the assembled calculator
 

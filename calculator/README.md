@@ -2,6 +2,8 @@
 
 [Back to the main project README](../README.md) · [Standalone component library](../components/README.md)
 
+[Video folder and demonstration status](videos/README.md)
+
 The calculator is a working subsystem in the larger Minecraft Redstone computer project. It accepts two unsigned 8-bit numbers, each from 0 to 255, entered manually in binary. It performs arithmetic and bit-shift operations and shows the result through binary indicators and a seven-segment display.
 
 ## Confirmed working features
@@ -66,7 +68,7 @@ For example, with `3 − 8`, the first adder has no carry-out, so the negative d
 
 ![The two adders and surrounding wiring in the assembled calculator](images/calculator-two-adders.png)
 
-See the [component gallery](COMPONENTS.md) for the standalone four-bit adder, multiplexer, and a closer view of the negative detector.
+See the [calculator component gallery](COMPONENTS.md) for circuitry installed in the calculator, and the [standalone component library](../components/README.md) for the separate four-bit adder and multiplexer examples.
 
 ### Bit-shift operations
 
@@ -103,19 +105,13 @@ The calculator uses the **double dabble**, or shift-and-add-3, algorithm to conv
 
 During the conversion, the binary value is shifted through a sequence of stages. Before each shift, any BCD digit that is 5 or greater has 3 added to it. Repeating that process produces the decimal digits in BCD form. The separate sign and half-value signals bypass this conversion.
 
-The first image is the simpler layout used to show the converter's structure. The purple bars mark the repeated stages where the circuit shifts the value and conditionally adds 3.
-
-![Layout of the double dabble binary-to-BCD converter](images/double-dabble-layout.png)
-
-The second image shows the fully built double dabble converter. It is shown as a separate module and is not connected to the rest of the calculator in this view.
-
-![Fully built double dabble converter](images/double-dabble-built.png)
+The separate layout model and standalone converter are documented on the [converter page](../components/double-dabble/README.md). A dedicated close-up of the converter installed in the calculator can be added when available.
 
 ### Seven-segment output
 
 Each of the hundreds, tens, and ones digits has its own decoding circuitry. The purple circuit decodes the digit's four BCD input bits into one of ten digit-selection signals, representing 0 through 9. The white wiring maps the selected digit to the segments that must light up.
 
-![Standalone digit decoder and segment wiring](images/display-decoder-front.png)
+![Digit-decoding and segment circuitry installed behind the calculator display](images/display-installed-rear.png)
 
 The thousands position has a simplified driver: it shows a fixed 1 when needed and otherwise stays blank. This accommodates results above 999, such as the mathematically expected maximum of `(255 + 255) × 2 = 1020`; a recorded test of that maximum is still to be added.
 
@@ -127,7 +123,7 @@ The fractional output uses a fixed `.5` pattern controlled directly by the half-
 
 ![Full calculator front panel with the seven-segment display above the binary output and controls](images/calculator-front.png)
 
-See the [display component gallery](COMPONENTS.md#digit-decoder-and-seven-segment-wiring) for both angles of the standalone decoder and its implementation behind the calculator display.
+See the [installed display gallery](COMPONENTS.md#display-circuitry-in-the-assembled-calculator) for another view of the implemented circuitry. The separate demonstration decoder is on the [display component page](../components/seven-segment-display/README.md).
 
 ## Suggested demonstrations
 
@@ -157,7 +153,7 @@ Mattbatwings' YouTube videos were a main reference during the build, including f
 - [ ] Credit any other reused circuit designs as their sources are identified
 - [ ] Add labeled screenshots of each major circuit
 - [ ] Add example calculations with expected and observed outputs
-- [ ] Add a video walkthrough
+- [ ] Upload and review the recorded silent demonstration
 
 ## Relationship to the full computer
 
