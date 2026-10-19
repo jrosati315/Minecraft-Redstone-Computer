@@ -19,4 +19,6 @@ These standalone gates and circuits are separate from the assembled calculator. 
 | [Double dabble converter](double-dabble/README.md) | Layout model, built module, and algorithm |
 | [Digit decoder and display](seven-segment-display/README.md) | Two standalone views and design credit |
 
-See the [authoring guide](AUTHORING.md) for image formatting and a reusable component-page template.
+See the [standalone circuit gallery](AUTHORING.md) for larger circuit examples and layout views.
+
+Truth tables describe the expected logical behavior of each component.
