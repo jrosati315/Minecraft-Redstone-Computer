@@ -2,13 +2,13 @@
 
 [Project overview](../README.md) · [Working calculator](../calculator/README.md)
 
-These standalone examples illustrate reusable logic circuits. They are separate from the assembled calculator; see the [calculator component gallery](../calculator/COMPONENTS.md) for the installed circuits. Individual gates and other examples are listed in the [component library](README.md).
+These are standalone circuits I built alongside the calculator. The [calculator gallery](../calculator/COMPONENTS.md) shows the installed versions, and the [component library](README.md) lists the individual gates and circuits.
 
 ## Four-bit ripple-carry adder
 
 ![Standalone four-bit ripple-carry adder](images/four-bit-adder.png)
 
-This separate four-bit example illustrates the ripple-carry design. Carry propagates from each bit to the next more significant bit. The calculator uses two adders in its arithmetic stage; see the [implemented arithmetic circuitry](../calculator/COMPONENTS.md#two-adder-arithmetic-stage-in-the-calculator).
+In this four-bit adder, each bit passes its carry to the next more significant bit. The calculator uses two adders in its arithmetic stage; see the [implemented arithmetic circuitry](../calculator/COMPONENTS.md#two-adder-arithmetic-stage-in-the-calculator).
 
 ## Multiplexer
 
@@ -24,7 +24,7 @@ The layout model shows the repeated shift-and-conditional-add-3 stages, marked b
 
 ![Fully built standalone double dabble converter](images/double-dabble-built.png)
 
-This built module is separate from the calculator and is not connected to it in this view. See the [calculator conversion description](../calculator/README.md#binary-to-bcd-conversion) for its role in the output path.
+This is a separate converter module, shown without a connection to the calculator. See the [calculator conversion description](../calculator/README.md#binary-to-bcd-conversion) for its role in the output path.
 
 ## Digit decoder and seven-segment wiring
 
@@ -32,6 +32,6 @@ This built module is separate from the calculator and is not connected to it in 
 
 ![Standalone digit decoder viewed from the input and wiring side](images/display-decoder-back.png)
 
-These are two views of a separate demonstration component. Purple circuitry decodes four BCD bits into one of ten digit selections, 0 through 9; white wiring maps that selection to the display segments. See the [installed display circuitry](../calculator/COMPONENTS.md#display-circuitry-in-the-assembled-calculator) for its implementation in the calculator.
+These two views show a standalone decoder. The purple circuitry decodes four BCD bits into a digit selection from 0 to 9. White wiring connects that selection to the display segments. See the [installed display circuitry](../calculator/COMPONENTS.md#display-circuitry-in-the-assembled-calculator) for its implementation in the calculator.
 
 I used Mattbatwings' [display-design tutorial at 20:25](https://www.youtube.com/watch?v=mDLfUbAK9T0&t=1225s) as a reference for the display.

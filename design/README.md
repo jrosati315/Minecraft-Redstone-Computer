@@ -2,7 +2,7 @@
 
 [Project overview](../README.md) · [Working calculator](../calculator/README.md) · [Component library](../components/README.md)
 
-My goal is to run Snake on a programmable Redstone computer with a graphical display and player controls. I'm following the general architecture taught in Mattbatwings' computer-building series, while working backward from Snake to choose the processor's operations, storage, and interfaces. The completed calculator was a practice project for arithmetic logic, binary conversion, and display circuitry. This page describes the planned computer.
+I want this computer to run Snake on a graphical display with player controls. I'm following Mattbatwings' computer-building series and using the game to decide which operations, storage, and interfaces to build. The calculator was practice for the arithmetic and display circuits. The computer described here is still being designed.
 
 ## Proposed architecture
 
@@ -10,7 +10,7 @@ My goal is to run Snake on a programmable Redstone computer with a graphical dis
 
 [Editable SVG diagram](images/snake-computer-architecture.svg) · [Full-size PNG](images/snake-computer-architecture.png)
 
-The diagram shows the intended functional outline, not a finished wiring schematic. It includes selected data and control paths; instruction bit positions, bus widths, clock phases, and all individual control signals are deliberately unspecified at this stage. Line crossings do not imply connections unless the paths share an endpoint or branch. The rectangular SELECT blocks represent multiplexers that route one of several values onto a shared path.
+The diagram shows how the main parts will connect. It includes selected data and control paths; I haven't set the instruction bit positions, bus widths, clock phases, or every control signal yet. Crossing lines connect only where they share an endpoint or branch. Each rectangular SELECT block is a multiplexer that chooses which value to pass along.
 
 | Block | Intended role |
 | --- | --- |
@@ -26,27 +26,27 @@ The diagram shows the intended functional outline, not a finished wiring schemat
 | Input/output interface | Read player controls and send values or commands to the display |
 | Graphical display | Show the Snake playfield |
 
-The reference architecture includes data memory and a call stack. I have retained both in the outline so their roles are explicit, without committing to their final implementation or capacity. The call stack stores return addresses; it is different from the storage used for the snake's body. The CPU boundary identifies the processor circuitry, while program storage, additional data storage, and game input/output sit around it.
+Mattbatwings' architecture includes data memory and a call stack, so I've kept both in the outline while I work out their size and role. A call stack holds return addresses, separate from the snake's body data. The CPU boundary encloses the processor. Program memory, additional data storage, and the game's input and output sit outside it.
 
 ## Architecture reference
 
-I use Mattbatwings' [Let's Make a Redstone Computer! series](https://www.youtube.com/playlist?list=PL5LiOvrbVo8nPTtdXAdSmDWzu85zzdgRT) as a learning reference for the architecture and the steps involved in building each part. This diagram is redrawn with a different layout, color scheme, and selector symbols, with game input/output added for the Snake goal. The underlying architecture is credited to that reference; the Snake-specific requirements and final implementation are the focus of my build.
+I'm learning the architecture and how to build each part from Mattbatwings' [Let's Make a Redstone Computer! series](https://www.youtube.com/playlist?list=PL5LiOvrbVo8nPTtdXAdSmDWzu85zzdgRT). The diagram redraws that architecture and adds the game's input and display. I'll adapt the hardware and instructions to run Snake.
 
 ## Target behavior
 
-The game will advance a snake across a grid, accept direction changes, place food, grow the snake when it eats, and detect collisions. The display will show the snake and food. A game-over state and restart behavior are part of the target.
+The player will steer a snake around a grid and collect food to grow. The computer will move the body, check for collisions, and draw the snake and food. The game will also need a game-over state and a way to restart.
 
-The playfield dimensions, maximum snake length, wall behavior, and target movement speed are not fixed yet. These choices determine the size and performance needed from the hardware. Food placement needs a way to choose an unoccupied cell; a simple pseudo-random generator or a deterministic candidate sequence can provide candidates without requiring a hardware random-number source.
+I haven't chosen the grid size, maximum snake length, wall behavior, or movement speed yet. Those choices affect storage capacity and how quickly the computer must run. Food must appear in an empty cell. A simple pseudo-random generator or a fixed sequence of candidate cells could handle that, with an occupancy check before placing food.
 
 ## What counts as the CPU
 
-The CPU is the circuitry that executes instructions. In this design, that means the ALU, working registers, instruction decoder and control circuitry, and the program counter that identifies the next instruction. An instruction register may hold the current instruction, depending on the sequencing design. Connections and multiplexers move values among these parts.
+The CPU executes instructions. It contains the ALU, working registers, instruction decoder, control circuitry, and program counter. Depending on the timing design, an instruction register may hold the current instruction. Wires and multiplexers move values between these parts.
 
-Program storage supplies the instructions. The display, its controller, player inputs, and any additional data storage complete the computer around the CPU. Program storage can be separate from writable game-state storage; its physical implementation is a design choice.
+Program storage supplies the instructions. The display controller, screen, player inputs, and any additional data storage connect to the CPU. Instructions can be stored separately from writable game data.
 
-The register file is a bank of working registers selected for reads and writes. It is normally part of the CPU. A separate main RAM module is not a requirement for a small programmable computer if its registers and other state storage provide enough capacity and access for the program.
+The register file holds the working values the CPU reads and writes. A small computer can run without separate main RAM if the registers and other storage hold everything its program needs and let it access those values.
 
-Registers are memory in the broad sense. The distinction here is their role and how instructions access them, rather than whether Redstone registers count as storage. Storage accessed as a general addressable data array can serve as main memory, even when it is physically built from registers.
+Registers store data, too. Their role and access method distinguish them from main memory. A general addressable array can serve as main memory even if it is built from individual Redstone registers.
 
 ## Working backward from the game
 
@@ -60,32 +60,32 @@ Registers are memory in the broad sense. The distinction here is their role and 
 | Place food | Choose and check an unoccupied location | Candidate generator plus occupancy check |
 | Repeat and restart | Execute loops and change control flow | Program counter, branches, and initialization instructions |
 
-These are capabilities, not a finalized instruction list. Reading input, writing the display, moving data, and branching are processor or system functions; they do not all belong inside the ALU.
+This table describes what the computer must do. The instruction list comes later. Input, display writes, data transfers, and branches need support from the processor and surrounding circuits as well as the ALU.
 
 ## ALU direction
 
-Addition, subtraction, and zero or equality detection are useful starting points. Depending on the state representation, bitwise logic, shifts, carry or borrow signals, or unsigned comparisons may also help. Comparisons can be provided by a subtraction result or separate comparison circuitry; each comparison does not require a separate arithmetic unit.
+I'll start with addition, subtraction, and zero or equality detection. Bitwise logic, shifts, carry or borrow signals, and unsigned comparisons may help once I've chosen how to store the game state. A comparison can use subtraction or separate comparison circuitry; it doesn't need its own arithmetic unit for every condition.
 
-General multiplication, general division, fractional arithmetic, and binary-to-decimal conversion are not inherently needed for the core game. Coordinates can be maintained directly, and movement uses small offsets. Score display and other optional features may introduce additional needs.
+Core Snake can use whole-number coordinates and small movement offsets, without general multiplication, division, fractional arithmetic, or decimal conversion. A score display or other additions may need more operations.
 
-The final ALU operations will follow a sketch of the game program and the chosen data representation. The existing calculator's ten magnitude bits, separate sign, and half-value output do not dictate the CPU's internal number format.
+Before fixing the ALU operations, I'll sketch the game program and its data layout. The calculator's ten magnitude bits, separate sign, and half-value output don't set the CPU's number format.
 
 ## Storage budget
 
-The head and food positions alone are insufficient to represent a growing snake. The program also needs a representation of the body, direction, length, and any indices used to update that body. Collision detection may use a scan of body positions or a separate occupancy map. The display may hold its own pixel state or be refreshed from other storage.
+The program has to remember the body as well as the head and food positions. It also needs the direction, length, and any indices used to update the body. Collision detection could scan stored body positions or use an occupancy map. The screen could hold its own pixel state or be refreshed from other storage.
 
-As an example, a 16 by 16 playfield has 256 cells. One position can be packed into eight bits: four for X and four for Y. A representation storing one byte per body position would use 64 bytes for a maximum length of 64 cells, before other game variables and scratch space. This is an illustration, not a chosen size or a minimum storage requirement; direction histories and other encodings have different costs.
+For example, a 16×16 grid has 256 cells. One position fits in eight bits: four for X and four for Y. Storing one byte per body position would take 64 bytes for a 64-cell snake, plus space for other variables and temporary values. I haven't chosen that grid or storage method. A direction history or another encoding would use a different amount of space.
 
-If the CPU selects registers only through fixed register numbers in instructions, updating a variable-length body can require extra code or selection circuitry. Indirect access, a dedicated body buffer, or a shift-register representation are alternatives. The register-file size and access method therefore need to be considered together.
+If instructions can only select fixed register numbers, updating a growing body may take extra code or selection circuits. Indirect access, a dedicated body buffer, or shift registers offer other options. I'll choose the register-file size and access method together.
 
 ## Display and timing
 
-The graphical playfield is a new subsystem. The calculator's decimal decoder can remain useful for a score or debugging display, but drawing Snake needs a way to select cells and change their displayed state.
+The game needs a new graphical display with a way to select cells and turn them on or off. The calculator's decimal decoder could still serve a score or debugging display.
 
-CPU execution and game movement have different timing needs. The processor can execute many instructions between movement steps. Input should be retained long enough for the program to read it, and the game should update its position at a controlled interval. The required clock rate depends on Redstone propagation delays, the number of instructions per update, and the intended play speed.
+The processor can execute many instructions between game moves. Input must stay available long enough for the program to read it, and movement needs a controlled interval. Redstone propagation delays, instructions per update, and the intended play speed will determine the clock rate.
 
 ## Design direction
 
-The next design work is to choose the grid and maximum length, sketch the game-state layout and update loop, and define how the program accesses instructions, registers, input, and the display. Those decisions will determine the instruction set and ALU before the complete processor is built.
+Next I'll choose the grid and maximum snake length, sketch the update loop and storage layout, and decide how the program accesses registers, instructions, controls, and the screen. That gives me a basis for choosing the instruction set and ALU before building the processor.
 
-The intended result is a programmable computer that runs Snake as its target application. A circuit with permanently wired Snake behavior would instead be a dedicated game controller. Instruction execution, rather than the presence of a separate RAM module, distinguishes the planned CPU from the existing manual calculator.
+The goal is to load a program that runs Snake. The CPU will execute that program, rather than having the game behavior permanently wired into it.

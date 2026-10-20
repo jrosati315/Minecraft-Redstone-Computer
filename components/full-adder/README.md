@@ -2,11 +2,11 @@
 
 [Component library](../README.md) · [Ripple-carry adder](../ripple-carry-adder/README.md)
 
-A full adder adds two one-bit inputs and a carry-in. It produces a sum bit and carry-out, allowing multiple stages to be chained into a wider adder.
+A full adder adds two one-bit inputs and a carry-in, producing a sum bit and carry-out. Connecting each carry-out to the next stage builds a wider adder.
 
 ![Standalone full adder inside an orange border](../images/full-adder.png)
 
-The screenshot shows the separate full-adder example. 
+This is my standalone full-adder example.
 
 ## Logic
 

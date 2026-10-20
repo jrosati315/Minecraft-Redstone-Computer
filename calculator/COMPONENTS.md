@@ -2,13 +2,13 @@
 
 [Project overview](../README.md) · [Calculator description](README.md) · [Standalone component library](../components/README.md)
 
-These screenshots show components installed in my completed calculator practice build and its front panel. I used this project to learn arithmetic logic, binary conversion, and display circuitry before designing the [Snake computer](../design/README.md). Separate demonstration circuits and layout models are kept in the [standalone component library](../components/README.md).
+These screenshots show the circuits and front panel of my calculator. I built it to practice arithmetic logic, binary conversion, and display circuitry before starting the [Snake computer](../design/README.md). The [component library](../components/README.md) contains the separate circuit examples and layout models.
 
 ## Two-adder arithmetic stage in the calculator
 
 ![The two adders and surrounding colored signal paths inside the calculator](images/calculator-two-adders.png)
 
-The blue wiring carries the second input, B, into the conditional inversion circuitry. In subtraction mode, B is inverted and a carry-in of 1 is supplied to the first adder, forming `A + ~B + 1`.
+The blue wiring carries input B to the conditional inverter. Subtraction inverts B and supplies a carry-in of 1 to the first adder, giving `A + ~B + 1`.
 
 If the result is negative, the second adder converts it to a positive magnitude by inverting it and adding 1. The magnitude-selection multiplexer chooses the second result for negative subtraction answers and the first result otherwise. This stage comes before the multiply/divide multiplexers.
 
@@ -37,7 +37,7 @@ For `3 − 8`, carry-out is off, the negative signal is on, and the selected mag
 
 ![Angled view of installed segment wiring and connections to the display](images/display-installed-angle.png)
 
-These views show the digit-decoding and segment circuitry implemented behind the calculator's display. The double dabble converter supplies the whole-number digit values, while the sign and half-value signals control their fixed patterns separately.
+Behind the display, digit decoders select which segment patterns light up. Double dabble supplies the whole-number digits. The sign and half-value signals control their own fixed patterns.
 
 ## Assembled front panel
 
@@ -51,7 +51,7 @@ The central controls run left to right: ADD / SUB (off for addition, on for subt
 
 ![Calculator front panel with binary inputs and output below the decimal display](images/calculator-front.png)
 
-The front panel brings the inputs, operation controls, binary output, sign indication, and seven-segment display together. The final result has 10 whole-number magnitude bits, a separate negative-sign bit, and a fractional bit worth 0.5.
+The panel holds the input levers, operation switches, binary indicators, and decimal display. The result has 10 whole-number magnitude bits, a negative-sign bit, and a fractional bit worth 0.5.
 
 The fractional bit directly enables a fixed `.5` display. When the bit is off, the fractional display is blank.
 

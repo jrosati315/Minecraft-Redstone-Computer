@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2100" height="1340" viewBox="0 0 2100 1340">
+<title>Proposed Redstone Snake computer architecture</title>
+<desc>Conceptual instruction flow and datapath with a CPU, program memory, data storage, and input and display interface. Multiplexers use rectangular selector symbols. Architecture inspired by Mattbatwings; layout redrawn for this project.</desc>
+<rect width="2100" height="1340" fill="#f5f7fb"/>
+<text x="60" y="73.72" font-family="Arial, sans-serif" font-size="44" font-weight="700" text-anchor="start" fill="#15283f">REDSTONE COMPUTER / SNAKE</text>
+<text x="60" y="116.64" font-family="Arial, sans-serif" font-size="28" font-weight="700" text-anchor="start" fill="#2866ad">Proposed system outline</text>
+<text x="60" y="152.24" font-family="Arial, sans-serif" font-size="23" font-weight="400" text-anchor="start" fill="#52657a">A programmable processor, sized around the game.</text>
+<rect x="45" y="260" width="1470" height="875" rx="22" fill="#ffffff" stroke="#c6d2e2" stroke-width="3"/>
+<text x="72" y="297.0" font-family="Arial, sans-serif" font-size="25" font-weight="700" text-anchor="start" fill="#2866ad">CPU</text>
+<text x="72" y="327.6" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="start" fill="#52657a">Executes instructions</text>
+<polyline points="350,380 410,380 410,207 500,207" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="500,207 487.39374056706254,213.08951747755722 487.39374056706254,200.91048252244278" fill="#2866ad"/>
+<text x="420" y="192.84" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#2866ad">address</text>
+<polyline points="660,250 660,335" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="660,335 653.9104825224427,322.39374056706254 666.0895174775573,322.39374056706254" fill="#2866ad"/>
+<text x="675" y="290.84" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#2866ad">instruction</text>
+<polyline points="230,455 230,495" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="230,495 223.91048252244278,482.39374056706254 236.08951747755722,482.39374056706254" fill="#2866ad"/>
+<polyline points="230,565 230,650" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="230,650 223.91048252244278,637.3937405670625 236.08951747755722,637.3937405670625" fill="#2866ad"/>
+<text x="245" y="605.84" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#2866ad">sequential</text>
+<polyline points="110,705 80,705 80,400 110,400" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="110,400 97.39374056706252,406.08951747755725 97.39374056706252,393.91048252244275" fill="#2866ad"/>
+<polyline points="560,420 390,420 390,690 350,690" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="350,690 362.60625943293746,683.9104825224427 362.60625943293746,696.0895174775573" fill="#2866ad"/>
+<text x="360" y="640.84" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#2866ad">target</text>
+<polyline points="560,440 450,440 450,545 495,545" fill="none" stroke="#087f7a" stroke-width="4" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polygon points="495,545 482.39374056706254,551.0895174775573 482.39374056706254,538.9104825224427" fill="#087f7a"/>
+<polyline points="940,385 1000,385" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1000,385 987.3937405670625,391.08951747755725 987.3937405670625,378.91048252244275" fill="#2866ad"/>
+<polyline points="1110,440 1110,490 940,490 940,610" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="940,610 933.9104825224427,597.3937405670625 946.0895174775573,597.3937405670625" fill="#2866ad"/>
+<text x="970" y="515.84" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#2866ad">immediate</text>
+<polyline points="780,570 1080,570" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1080,570 1067.3937405670624,576.0895174775573 1067.3937405670624,563.9104825224427" fill="#2866ad"/>
+<text x="845" y="557.84" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#2866ad">operand A</text>
+<polyline points="780,650 860,650" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="860,650 847.3937405670625,656.0895174775573 847.3937405670625,643.9104825224427" fill="#2866ad"/>
+<polyline points="1020,665 1080,665" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1080,665 1067.3937405670624,671.0895174775573 1067.3937405670624,658.9104825224427" fill="#2866ad"/>
+<polyline points="1225,720 1225,825" fill="none" stroke="#b26b13" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1225,825 1218.9104825224429,812.3937405670625 1231.0895174775571,812.3937405670625" fill="#b26b13"/>
+<polyline points="1370,610 1640,610" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1640,610 1627.3937405670624,616.0895174775573 1627.3937405670624,603.9104825224427" fill="#2866ad"/>
+<text x="1415" y="597.84" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#2866ad">address / result</text>
+<polyline points="780,680 810,680 810,760 1550,760 1550,665 1640,665" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1640,665 1627.3937405670624,671.0895174775573 1627.3937405670624,658.9104825224427" fill="#2866ad"/>
+<text x="1390" y="746.84" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#2866ad">store data</text>
+<polyline points="1370,680 1400,680 1400,950 1060,950" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1060,950 1072.6062594329376,943.9104825224427 1072.6062594329376,956.0895174775573" fill="#2866ad"/>
+<polyline points="1480,610 1480,790 1640,790" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1640,790 1627.3937405670624,796.0895174775573 1627.3937405670624,783.9104825224427" fill="#2866ad"/>
+<polyline points="1550,760 1550,835 1640,835" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1640,835 1627.3937405670624,841.0895174775573 1627.3937405670624,828.9104825224427" fill="#2866ad"/>
+<polyline points="1820,710 1820,735 1590,735 1590,985 1060,985" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1060,985 1072.6062594329376,978.9104825224427 1072.6062594329376,991.0895174775573" fill="#2866ad"/>
+<text x="1435" y="977.84" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#2866ad">load / input</text>
+<polyline points="850,975 425,975 425,660 470,660" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="470,660 457.39374056706254,666.0895174775573 457.39374056706254,653.9104825224427" fill="#2866ad"/>
+<text x="545" y="958.84" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#2866ad">write-back value</text>
+<polyline points="350,530 375,530 375,1045 470,1045" fill="none" stroke="#7d8c9e" stroke-width="4" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polygon points="470,1045 457.39374056706254,1051.0895174775571 457.39374056706254,1038.9104825224429" fill="#7d8c9e"/>
+<polyline points="470,1070 355,1070 355,735 350,735" fill="none" stroke="#7d8c9e" stroke-width="4" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polygon points="350,735 362.60625943293746,728.9104825224427 362.60625943293746,741.0895174775573" fill="#7d8c9e"/>
+<text x="365" y="1016.84" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#7d8c9e">return</text>
+<polyline points="1250,915 1250,1110 230,1110 230,770" fill="none" stroke="#b26b13" stroke-width="4" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polygon points="230,770 236.08951747755722,782.6062594329375 223.91048252244278,782.6062594329375" fill="#b26b13"/>
+<text x="850" y="1095.84" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#b26b13">branch condition</text>
+<polyline points="900,445 900,465 1445,465 1445,815 1640,815" fill="none" stroke="#087f7a" stroke-width="4" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polygon points="1640,815 1627.3937405670624,821.0895174775573 1627.3937405670624,808.9104825224427" fill="#087f7a"/>
+<text x="1458" y="805.84" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="start" fill="#087f7a">control</text>
+<polyline points="1445,465 1445,540 1640,540" fill="none" stroke="#087f7a" stroke-width="4" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polygon points="1640,540 1627.3937405670624,546.0895174775573 1627.3937405670624,533.9104825224427" fill="#087f7a"/>
+<polyline points="1820,875 1820,925" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1820,925 1813.9104825224429,912.3937405670625 1826.0895174775571,912.3937405670625" fill="#2866ad"/>
+<polyline points="1640,1110 1610,1110 1610,850 1640,850" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1640,850 1627.3937405670624,856.0895174775573 1627.3937405670624,843.9104825224427" fill="#2866ad"/>
+<polyline points="1640,860 1570,860 1570,1010 1060,1010" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1060,1010 1072.6062594329376,1003.9104825224427 1072.6062594329376,1016.0895174775573" fill="#2866ad"/>
+<rect x="500" y="160" width="320" height="90" rx="16" fill="#f1edfa" stroke="#6652a0" stroke-width="3"/>
+<text x="660.0" y="202.76" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#6652a0">Program memory</text>
+<text x="660.0" y="234.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">Instructions</text>
+<rect x="110" y="350" width="240" height="105" rx="16" fill="#eaf1fc" stroke="#2866ad" stroke-width="3"/>
+<text x="230.0" y="391.88" font-family="Arial, sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#2866ad">Program counter</text>
+<text x="230.0" y="423.6" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#52657a">Next instruction address</text>
+<rect x="110" y="495" width="240" height="70" rx="16" fill="#eaf1fc" stroke="#2866ad" stroke-width="3"/>
+<text x="230.0" y="537.76" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#2866ad">PC + 1</text>
+<rect x="110" y="650" width="240" height="120" rx="16" fill="#e6f6f3" stroke="#087f7a" stroke-width="3"/>
+<text x="230.0" y="692.76" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#087f7a">Next-PC select</text>
+<text x="230.0" y="721.84" font-family="Arial, sans-serif" font-size="18" font-weight="400" text-anchor="middle" fill="#52657a">SEQUENTIAL / TARGET</text>
+<text x="230.0" y="749.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">RETURN (if used)</text>
+<rect x="560" y="335" width="380" height="110" rx="16" fill="#e6f6f3" stroke="#087f7a" stroke-width="3"/>
+<text x="750.0" y="377.76" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#087f7a">Decode &amp; control</text>
+<text x="750.0" y="409.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">Register enables / ALU operation</text>
+<text x="750.0" y="434.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">Memory, I/O and branch control</text>
+<rect x="1000" y="335" width="220" height="105" rx="16" fill="#eaf1fc" stroke="#2866ad" stroke-width="3"/>
+<text x="1110.0" y="376.88" font-family="Arial, sans-serif" font-size="26" font-weight="700" text-anchor="middle" fill="#2866ad">Immediate path</text>
+<text x="1110.0" y="409.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">Extend / format</text>
+<text x="1110.0" y="434.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">as required</text>
+<rect x="470" y="530" width="310" height="165" rx="16" fill="#eaf1fc" stroke="#2866ad" stroke-width="3"/>
+<text x="625.0" y="572.76" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#2866ad">Register file</text>
+<text x="625.0" y="604.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">Working values</text>
+<text x="625.0" y="629.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">Two read paths / write-back</text>
+<rect x="860" y="610" width="160" height="105" rx="16" fill="#e6f6f3" stroke="#087f7a" stroke-width="3"/>
+<text x="940.0" y="652.76" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#087f7a">B select</text>
+<text x="940.0" y="684.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">REG / IMM</text>
+<rect x="1080" y="530" width="290" height="190" rx="16" fill="#eaf1fc" stroke="#2866ad" stroke-width="3"/>
+<text x="1225.0" y="572.76" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#2866ad">ALU</text>
+<text x="1225.0" y="604.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">Arithmetic and logic</text>
+<text x="1225.0" y="628.6" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#52657a">Operations chosen for Snake</text>
+<text x="1225.0" y="654.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">Result + status</text>
+<rect x="1120" y="825" width="250" height="90" rx="16" fill="#fff5e4" stroke="#b26b13" stroke-width="3"/>
+<text x="1245.0" y="867.76" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#b26b13">Flags</text>
+<text x="1245.0" y="899.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">Zero / carry, as needed</text>
+<rect x="850" y="925" width="210" height="105" rx="16" fill="#e6f6f3" stroke="#087f7a" stroke-width="3"/>
+<text x="955.0" y="963.36" font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#087f7a">Write-back select</text>
+<text x="955.0" y="997.72" font-family="Arial, sans-serif" font-size="19" font-weight="400" text-anchor="middle" fill="#52657a">ALU / LOAD / INPUT</text>
+<rect x="470" y="1000" width="280" height="90" rx="16" fill="#f5f7fa" stroke="#7d8c9e" stroke-width="3" stroke-dasharray="10 7"/>
+<text x="610.0" y="1042.76" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#7d8c9e">Call stack</text>
+<text x="610.0" y="1073.6" font-family="Arial, sans-serif" font-size="20" font-weight="400" text-anchor="middle" fill="#52657a">Return addresses / optional</text>
+<rect x="1640" y="510" width="360" height="200" rx="16" fill="#f1edfa" stroke="#6652a0" stroke-width="3" stroke-dasharray="10 7"/>
+<text x="1820.0" y="552.76" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#6652a0">Data storage</text>
+<text x="1820.0" y="584.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">Body / game state</text>
+<text x="1820.0" y="609.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">Capacity and interface</text>
+<text x="1820.0" y="634.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">to be sized for Snake</text>
+<rect x="1640" y="775" width="360" height="100" rx="16" fill="#e6f6f3" stroke="#087f7a" stroke-width="3"/>
+<text x="1820.0" y="817.76" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#087f7a">Input / output interface</text>
+<text x="1820.0" y="849.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">Read controls / write display</text>
+<rect x="1640" y="925" width="360" height="100" rx="16" fill="#eaf1fc" stroke="#2866ad" stroke-width="3"/>
+<text x="1820.0" y="967.76" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#2866ad">Graphical display</text>
+<text x="1820.0" y="999.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">Snake playfield / pixel state</text>
+<rect x="1640" y="1060" width="360" height="100" rx="16" fill="#eaf1fc" stroke="#2866ad" stroke-width="3"/>
+<text x="1820.0" y="1102.76" font-family="Arial, sans-serif" font-size="27" font-weight="700" text-anchor="middle" fill="#2866ad">Player controls</text>
+<text x="1820.0" y="1134.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#52657a">Direction input / restart</text>
+<text x="60" y="1193.48" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="start" fill="#52657a">READING THE OUTLINE</text>
+<polyline points="65,1220 125,1220" fill="none" stroke="#2866ad" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="125,1220 112.39374056706252,1226.0895174775571 112.39374056706252,1213.9104825224429" fill="#2866ad"/>
+<text x="140" y="1222.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="start" fill="#52657a">Data / address paths</text>
+<polyline points="450,1220 510,1220" fill="none" stroke="#087f7a" stroke-width="4" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polygon points="510,1220 497.39374056706254,1226.0895174775571 497.39374056706254,1213.9104825224429" fill="#087f7a"/>
+<text x="525" y="1222.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="start" fill="#52657a">Control (selected paths)</text>
+<polyline points="990,1220 1050,1220" fill="none" stroke="#b26b13" stroke-width="4" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polygon points="1050,1220 1037.3937405670624,1226.0895174775571 1037.3937405670624,1213.9104825224429" fill="#b26b13"/>
+<text x="1065" y="1222.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="start" fill="#52657a">Status / branch decision</text>
+<text x="60" y="1269.36" font-family="Arial, sans-serif" font-size="22" font-weight="400" text-anchor="start" fill="#52657a">Rectangular SELECT blocks are multiplexers. Conceptual connections only; widths and instruction encoding are not fixed.</text>
+<text x="60" y="1309.48" font-family="Arial, sans-serif" font-size="21" font-weight="400" text-anchor="start" fill="#52657a">Architecture inspiration: Mattbatwings. Diagram redrawn for this project; Snake-specific details remain in design.</text>
+</svg>

@@ -6,15 +6,15 @@
 
 ![Standalone eight-bit ripple-carry adder](../images/eight-bit-adder.png)
 
-This adder combines two eight-bit numbers. It has eight bit positions, rather than eight independent number inputs: each position receives one bit from A and one from B. Carry propagates from one position to the next. A final carry-out can extend the result to nine bits.
+This adder adds two eight-bit numbers. Each of its eight positions receives one bit from A and one from B, then passes its carry to the next position. The final carry-out can extend the answer to nine bits.
 
-The paired input indicators sit along the lower edge and the eight sum indicators along the upper edge. 
+The paired input indicators sit along the lower edge and the eight sum indicators along the upper edge.
 
 ## Four-bit standalone example
 
 ![Standalone four-bit ripple-carry adder](../images/four-bit-adder.png)
 
-This separate example demonstrates a four-bit ripple-carry adder. Each bit's carry-out feeds the next more significant bit's carry-in. The calculator uses two ripple-carry adders with eight-bit input values.
+This is a separate four-bit version of the ripple-carry adder. Each bit's carry-out feeds the next more significant bit's carry-in. The calculator uses two ripple-carry adders with eight-bit input values.
 
 ## Logic
 

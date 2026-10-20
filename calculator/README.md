@@ -4,7 +4,7 @@
 
 [Watch the calculator demonstration](https://youtu.be/XQKjd9Awp-k) · [Video and example results](videos/README.md)
 
-I built this calculator as an initial, complete project to practice the arithmetic logic, binary-to-BCD conversion, and display circuitry needed for a larger Redstone computer. It accepts two unsigned 8-bit numbers, each from 0 to 255, entered manually in binary. It performs arithmetic and bit-shift operations and shows the result through binary indicators and a seven-segment display.
+I built this calculator to practice arithmetic logic, binary-to-BCD conversion, and display circuitry before starting the computer. It gave me a complete project to finish first. Two banks of levers accept unsigned 8-bit numbers from 0 to 255, and the answer appears on binary indicators and a seven-segment display.
 
 ## Confirmed working features
 
@@ -44,17 +44,17 @@ Here, on means the lever's powered state. With both shift controls on, multiplic
 
 Above the controls, the binary output includes a negative indicator. The large seven-segment display sits at the top of the panel.
 
-The calculator uses **combinational logic**. Changing an input or operation switch automatically changes the output after the Redstone signals propagate and settle. There is no clock or separate button to trigger a calculation. Allow the signals to settle before reading the result.
+The calculator uses **combinational logic**: changing an input or operation switch changes the output after the Redstone signals settle. It has no clock or calculate button.
 
 To use the calculator, enter A and B in binary with their lever banks, select addition or subtraction, and set the shift controls as needed. Allow the output to settle before reading the result.
 
 ## How the calculator is organized
 
-The signal path runs through the two-adder arithmetic stage, a magnitude-selection multiplexer, the multiply/divide shift stages, and the output-conversion and display circuitry. A separate negative-result signal controls the sign indication.
+The inputs pass through two adders, a multiplexer that selects the magnitude, and the multiply/divide stages. The result then goes to the converter and display. A separate signal controls the negative sign.
 
 ### Arithmetic logic unit
 
-The ALU uses two ripple-carry adders. Each bit's carry feeds the next more significant bit, so the carry propagates through the adder. The first adder performs the requested addition or subtraction. The second converts a negative subtraction result into a positive magnitude for the downstream circuitry.
+The arithmetic stage uses two ripple-carry adders. Each bit passes its carry to the next more significant bit. The first adder handles addition or subtraction; the second converts a negative subtraction result to a positive magnitude for the display path.
 
 In addition mode, the first adder calculates `A + B`, and its result is selected. Addition can require a ninth result bit.
 
@@ -62,7 +62,7 @@ In subtraction mode, B's bits are inverted and the first adder receives a carry-
 
 `negative = subtract_enabled AND NOT first_adder_carry_out`
 
-During subtraction, no carry-out means that A is smaller than B. If the negative detector is on, the first result is inverted and 1 is added through the second adder to obtain its positive magnitude. A multiplexer selects this second result for negative answers and the first result otherwise. The negative signal is kept separate from the selected magnitude.
+During subtraction, no carry-out means A is smaller than B. The negative detector then selects the second adder, which inverts the first result and adds 1 to get its magnitude. Otherwise, the multiplexer selects the first adder. The sign travels separately from the magnitude.
 
 For example, with `3 − 8`, the first adder has no carry-out, so the negative detector turns on. The second adder produces a magnitude of 5, and the separate sign signal indicates a negative answer. The magnitude then enters the multiply/divide shift stages.
 
@@ -83,11 +83,11 @@ The multiply-by-2 stage comes first. When enabled, it moves the result's bits on
 | Off | On | Arithmetic result divided by 2 |
 | On | On | Original arithmetic result |
 
-The integer magnitude has 10 bits to accommodate multiplication by 2. In the divide-by-2 stage, the least significant whole-number bit shifts into a separate fractional position with a weight of one half. This preserves an odd result's remainder: binary `0.1` equals decimal `0.5`. The fractional bit enables a fixed `.5` display when set; when clear, that display is blank. This division is a shift toward lower place values, conventionally called a right shift, regardless of the wiring's physical direction in Minecraft.
+The 10-bit magnitude leaves room to multiply the answer by 2. When dividing by 2, the lowest whole-number bit shifts into a separate position worth one half. That keeps the remainder of an odd result: binary `0.1` equals decimal `0.5`. The fractional bit turns a fixed `.5` display on or off. This is a right shift because the bits move to lower place values, regardless of how the wiring is arranged in Minecraft.
 
 ### Output representation
 
-The final output consists of 12 bits total: 10 whole-number magnitude bits, one negative-sign bit, and one half-value bit:
+The output has 12 bits:
 
 | Field | Signals | Meaning |
 | --- | --- | --- |
@@ -95,13 +95,13 @@ The final output consists of 12 bits total: 10 whole-number magnitude bits, one 
 | Whole-number magnitude | 10 | Unsigned whole-number part of the answer |
 | Fraction | 1 | Adds `0.5` to the magnitude when set |
 
-The sign is separate from the magnitude and fraction. Although subtraction uses two's complement internally, the final output is a sign-and-magnitude representation with one fractional bit. The 12 signals are therefore not a single 12-bit two's-complement integer.
+The final answer uses sign-and-magnitude representation with one fractional bit. The sign applies to both the whole-number magnitude and the fraction. Subtraction uses two's complement inside the arithmetic stage, but the 12 output bits are not a single two's-complement integer.
 
 For example, dividing a magnitude of 5 by 2 produces a whole-number magnitude of 2 and a half-value bit of 1, representing 2.5. The demonstration shows a negative fractional output of -002.5 at approximately 0:41; see the [video examples](videos/README.md).
 
 ### Binary-to-BCD conversion
 
-The calculator uses the **double dabble**, or shift-and-add-3, algorithm to convert its 10 whole-number magnitude bits into decimal digit positions for thousands, hundreds, tens, and ones. A standard BCD digit uses four bits to encode a value from 0 through 9; four decimal digits are different from four binary bits. The thousands position only needs to represent 0 or 1 for a 10-bit magnitude.
+The calculator uses **double dabble**, also called shift-and-add-3, to convert the 10 magnitude bits into thousands, hundreds, tens, and ones. Each BCD digit uses four bits to encode 0 through 9. The thousands position only needs 0 or 1 for a 10-bit magnitude.
 
 During the conversion, the binary value is shifted through a sequence of stages. Before each shift, any BCD digit that is 5 or greater has 3 added to it. Repeating that process produces the decimal digits in BCD form. The separate sign and half-value signals bypass this conversion.
 
@@ -113,13 +113,13 @@ Each of the hundreds, tens, and ones digits has its own decoding circuitry. The 
 
 ![Digit-decoding and segment circuitry installed behind the calculator display](images/display-installed-rear.png)
 
-The thousands position has a simplified driver: it shows a fixed 1 when needed and otherwise stays blank. This accommodates results above 999, such as the mathematically expected maximum of `(255 + 255) × 2 = 1020`; the demonstration shows 1020 at approximately 1:06, following the 510 addition result. See the [video examples](videos/README.md).
+The thousands position uses a simple driver that shows 1 or stays blank. This allows results above 999, up to `(255 + 255) × 2 = 1020`. The [demonstration](videos/README.md) shows 510 from addition, then 1020 after multiplication at about 1:06.
 
-The hundreds, tens, and ones positions retain leading zeros. With the thousands position blank, five therefore appears as `005` preceded by a blank position, rather than four illuminated digits reading `0005`.
+The hundreds, tens, and ones positions keep their leading zeros. Five appears as `005`, with the thousands position blank.
 
-The negative signal enables a fixed minus-sign pattern. When the signal is off, that pattern is hidden. The front panel also exposes a binary result and a negative indicator below the main display.
+The negative signal lights a fixed minus sign. The panel also shows the binary result and a negative indicator below the main display.
 
-The fractional output uses a fixed `.5` pattern controlled directly by the half-value bit. It appears when that bit is on and is hidden when it is off. It does not pass through the binary-to-BCD converter or a separate numerical decoder.
+The half-value bit directly lights a fixed `.5` pattern. When the bit is off, that part of the display stays blank. It bypasses the BCD converter and digit decoders.
 
 ![Full calculator front panel with the seven-segment display above the binary output and controls](images/calculator-front.png)
 
@@ -127,12 +127,12 @@ See the [installed display gallery](COMPONENTS.md#display-circuitry-in-the-assem
 
 ## Design references and credits
 
-I used Mattbatwings' YouTube videos as a main reference during the build, including for some decoder designs. [This display-design tutorial at 20:25](https://www.youtube.com/watch?v=mDLfUbAK9T0&t=1225s) was my reference for the binary-to-decimal display design.
+I used Mattbatwings' YouTube videos to learn the circuits, including some of the decoder designs. [This display-design tutorial at 20:25](https://www.youtube.com/watch?v=mDLfUbAK9T0&t=1225s) was my reference for the binary-to-decimal display design.
 
 ## Relationship to the full computer
 
-This calculator is a completed practice project ahead of my [programmable Snake computer](../design/README.md). I built it to finish an initial project and gain experience with the ALU's building blocks, carry handling, multiplexers, conversion of binary numbers into decimal digits, and display decoding. Its lessons inform the computer design; the assembled calculator is not a finalized CPU or a commitment to reuse its entire datapath.
+The calculator gave me practice with the parts I'll need for the [Snake computer](../design/README.md), especially arithmetic, carry handling, multiplexers, binary conversion, and display decoding. I may reuse individual circuit designs, but I don't plan to treat the assembled calculator as the finished CPU.
 
-The calculator's 12 output bits describe its display-oriented result format. They do not set the future CPU's word size or instruction width. Its magnitude conversion, decimal display, and fractional output serve the calculator; the Snake processor's operations will be chosen from the game's requirements.
+The 12-bit output format belongs to this calculator. The CPU's word size, instruction width, and operations will depend on what Snake needs.
 
-Snake needs a graphical playfield in addition to player input and storage for its state. The current seven-segment display can show numbers, but it is not the planned game screen. The calculator is combinational; instruction sequencing and state updates belong to the future processor and its control circuitry.
+Snake will need a graphical screen, player input, and storage for the game state. It will also need a processor that sequences instructions and updates stored values, beyond the combinational circuitry used here.

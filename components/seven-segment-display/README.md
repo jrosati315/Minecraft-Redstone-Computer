@@ -10,7 +10,7 @@
 
 The purple circuitry decodes four BCD input bits into one of ten digit-selection signals, 0 through 9. The white wiring maps the selected value to the required display segments.
 
-For example, BCD `0101` selects decimal 5, and the segment wiring enables the pattern for 5. The display uses the valid BCD digit codes 0 through 9.
+For example, BCD `0101` selects 5 and lights its segment pattern. The display uses BCD codes 0 through 9.
 
 ## Calculator implementation
 

@@ -14,13 +14,13 @@ Purple bars mark the repeated shift-and-conditional-add-3 stages.
 
 ![Standalone double dabble converter](../images/double-dabble-built.png)
 
-This module is separate from the calculator and is not connected to it in this view.
+This standalone converter is shown without a connection to the calculator.
 
 ## Algorithm
 
 Starting with zeroed BCD digits, process the binary input from most significant bit to least significant bit. Before each shift, add 3 to every BCD digit whose value is at least 5. Shift the next input bit into the conversion path. After all bits have been processed, the BCD digits encode the decimal value.
 
-The Redstone layout implements the stages as combinational circuitry, so a clock is not needed to step through them.
+The Redstone stages are combinational, so the signals pass through them without a clock stepping the conversion.
 
 ## Calculator implementation
 

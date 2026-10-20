@@ -4,11 +4,11 @@
 
 ![Standalone multiplexer](../images/multiplexer.png)
 
-A multiplexer selects one of two input paths according to a control signal. Repeating this selection across multiple bits allows it to select a whole binary value.
+This multiplexer uses a control signal to choose between two input paths. Repeating the circuit for each bit lets it select a whole binary value.
 
 ## Logic
 
-For data inputs D0 and D1 and select S, the conventional relationship is:
+With data inputs D0 and D1 and select signal S:
 
 `output = (NOT S AND D0) OR (S AND D1)`
 
@@ -25,4 +25,4 @@ Multiplexers select the first or second adder's magnitude, then choose unshifted
 
 ## Planned computer
 
-In the [Snake computer outline](../../design/README.md#proposed-architecture), multiplexers use rectangular SELECT symbols. They choose the next program-counter value, an ALU operand, and the value written back to the register file. These symbols describe selection functions; they do not prescribe the physical Redstone layout or fix the instruction encoding.
+In the [Snake computer outline](../../design/README.md#proposed-architecture), multiplexers use rectangular SELECT symbols. They choose the next program-counter value, an ALU operand, and the value written back to the register file. The symbols show which values can be selected. The Redstone layout and instruction encoding are still being designed.

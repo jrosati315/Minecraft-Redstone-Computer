@@ -6,7 +6,7 @@ An AND gate outputs 1 only when both inputs are 1.
 
 ![Standalone AND gate](../images/and-gate.png)
 
-The central circuit is the AND example. The two lower lever-controlled indicators provide its inputs; the upper indicator shows the output. Other gates are visible at the edges of the screenshot.
+The AND gate is in the center of the screenshot. The two lower lever-controlled indicators show the inputs, and the upper indicator shows the output. Neighboring gates appear at the edges.
 
 `output = A AND B`
 

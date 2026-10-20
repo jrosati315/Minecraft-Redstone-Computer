@@ -4,7 +4,7 @@
 
 [Watch the demonstration on YouTube](https://youtu.be/XQKjd9Awp-k)
 
-This silent demonstration shows the input levers and operation controls, binary and decimal answers, and a tour of the internal Redstone circuitry.
+In this silent video, I operate the calculator, show its binary and decimal answers, and fly through the circuits behind the panel.
 
 ## Examples in the video
 
@@ -17,6 +17,6 @@ This silent demonstration shows the input levers and operation controls, binary 
 | 1:06 | `1020` after multiplying the 510 result by 2 |
 | 1:09–1:40 | Tour of the internal circuitry |
 
-The largest result shown is `(255 + 255) × 2 = 1020`, which uses the tenth magnitude bit and the thousands position on the decimal display. The negative fractional example shows the separate minus-sign and `.5` outputs.
+The largest answer in the video is `(255 + 255) × 2 = 1020`. It uses the tenth magnitude bit and the thousands position on the display. At 0:41, the minus sign and `.5` pattern light up for −2.5.
 
 The hundreds, tens, and ones positions retain leading zeros, so a result of −2.5 appears as `−002.5`.

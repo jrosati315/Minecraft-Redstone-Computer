@@ -4,7 +4,7 @@
 
 These standalone gates and circuits are separate from the assembled calculator. See the [calculator gallery](../calculator/COMPONENTS.md) for the components installed in it.
 
-The next system goal is a [programmable computer that runs Snake](../design/README.md), using an architecture inspired by Mattbatwings' computer-building series. The calculator was my initial completed practice project for arithmetic logic, binary conversion, and displays. The gates, adders, and multiplexers provide building blocks for the future datapath and control circuitry. The double-dabble converter and seven-segment circuitry belong to the existing decimal display; they are not prerequisites for the graphical Snake playfield.
+I'm using what I've learned from these circuits and the calculator to build a [computer that runs Snake](../design/README.md), following Mattbatwings' computer-building series. The gates, adders, and multiplexers will help form the processor. Double dabble and the seven-segment circuits serve the calculator's decimal display; Snake will use a graphical playfield.
 
 | Component | Contents |
 | --- | --- |
