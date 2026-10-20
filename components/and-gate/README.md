@@ -17,4 +17,4 @@ The central circuit is the AND example. The two lower lever-controlled indicator
 | 1 | 0 | 0 |
 | 1 | 1 | 1 |
 
-Here, 1 means powered and 0 means unpowered. This is the logical truth table, not a record of all input combinations tested in the build. Exact input labels, specific uses in larger circuits, and any design-source credits remain to be documented.
+Here, 1 means powered and 0 means unpowered.

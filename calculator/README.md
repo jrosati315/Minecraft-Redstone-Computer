@@ -1,10 +1,10 @@
-# 8-Bit Calculator Subsystem
+# 8-Bit Calculator Practice Build
 
 [Back to the main project README](../README.md) · [Standalone component library](../components/README.md)
 
 [Watch the calculator demonstration](https://youtu.be/XQKjd9Awp-k) · [Video and example results](videos/README.md)
 
-The calculator is a working subsystem in the larger Minecraft Redstone computer project. It accepts two unsigned 8-bit numbers, each from 0 to 255, entered manually in binary. It performs arithmetic and bit-shift operations and shows the result through binary indicators and a seven-segment display.
+I built this calculator as an initial, complete project to practice the arithmetic logic, binary-to-BCD conversion, and display circuitry needed for a larger Redstone computer. It accepts two unsigned 8-bit numbers, each from 0 to 255, entered manually in binary. It performs arithmetic and bit-shift operations and shows the result through binary indicators and a seven-segment display.
 
 ## Confirmed working features
 
@@ -131,4 +131,8 @@ I used Mattbatwings' YouTube videos as a main reference during the build, includ
 
 ## Relationship to the full computer
 
-This calculator is a working subsystem and a foundation for the planned computer. The CPU architecture, instruction set, memory, and control logic are part of the next stage of development.
+This calculator is a completed practice project ahead of my [programmable Snake computer](../design/README.md). I built it to finish an initial project and gain experience with the ALU's building blocks, carry handling, multiplexers, conversion of binary numbers into decimal digits, and display decoding. Its lessons inform the computer design; the assembled calculator is not a finalized CPU or a commitment to reuse its entire datapath.
+
+The calculator's 12 output bits describe its display-oriented result format. They do not set the future CPU's word size or instruction width. Its magnitude conversion, decimal display, and fractional output serve the calculator; the Snake processor's operations will be chosen from the game's requirements.
+
+Snake needs a graphical playfield in addition to player input and storage for its state. The current seven-segment display can show numbers, but it is not the planned game screen. The calculator is combinational; instruction sequencing and state updates belong to the future processor and its control circuitry.

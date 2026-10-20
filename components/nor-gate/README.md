@@ -6,7 +6,7 @@ A NOR gate outputs 1 only when both inputs are 0. Its output is the inverse of O
 
 ![Standalone nor gate](../images/nor-gate.png)
 
-The central two-input circuit combines the inputs before an output inversion. This layout is identified as NOR from the visible wiring; all four input combinations remain to be recorded.
+The central two-input circuit combines the inputs before an output inversion. The visible wiring suggests a NOR layout: the combined input signal is inverted at the output.
 
 ## Logic
 
@@ -19,5 +19,4 @@ The central two-input circuit combines the inputs before an output inversion. Th
 | 1 | 0 | 0 |
 | 1 | 1 | 0 |
 
-Here, 1 means powered and 0 means unpowered. The table describes the logic; a single screenshot does not establish a complete test of the gate. The exact physical input labels and any design-source credits remain to be documented.
-
+Here, 1 means powered and 0 means unpowered.

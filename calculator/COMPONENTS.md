@@ -2,7 +2,7 @@
 
 [Project overview](../README.md) · [Calculator description](README.md) · [Standalone component library](../components/README.md)
 
-These screenshots show components installed in the assembled calculator and its front panel. Separate demonstration circuits and layout models are kept in the [standalone component library](../components/README.md).
+These screenshots show components installed in my completed calculator practice build and its front panel. I used this project to learn arithmetic logic, binary conversion, and display circuitry before designing the [Snake computer](../design/README.md). Separate demonstration circuits and layout models are kept in the [standalone component library](../components/README.md).
 
 ## Two-adder arithmetic stage in the calculator
 

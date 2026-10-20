@@ -6,7 +6,7 @@ A full adder adds two one-bit inputs and a carry-in. It produces a sum bit and c
 
 ![Standalone full adder inside an orange border](../images/full-adder.png)
 
-The screenshot shows the separate full-adder example. The physical input, carry, and output connections still need labels.
+The screenshot shows the separate full-adder example. 
 
 ## Logic
 
@@ -24,5 +24,3 @@ The screenshot shows the separate full-adder example. The physical input, carry,
 | 1 | 0 | 1 | 0 | 1 |
 | 1 | 1 | 0 | 0 | 1 |
 | 1 | 1 | 1 | 1 | 1 |
-
-This is the logical truth table, not a record of exhaustive tests of this build. Any design-source credit for the physical layout remains to be documented.

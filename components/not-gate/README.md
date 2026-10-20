@@ -17,5 +17,4 @@ The central circuit is the single-input inverter. Neighboring circuits visible a
 | 0 | 1 |
 | 1 | 0 |
 
-Here, 1 means powered and 0 means unpowered. The table describes the logic; a single screenshot does not establish a complete test of the gate. The exact physical input labels and any design-source credits remain to be documented.
-
+Here, 1 means powered and 0 means unpowered.

@@ -17,14 +17,12 @@ For data inputs D0 and D1 and select S, the conventional relationship is:
 | 0 | D0 |
 | 1 | D1 |
 
-These are logical labels. The physical paths and select polarity in this screenshot still need to be labeled.
+D0, D1, and S describe the logical data inputs and select signal.
 
 ## Calculator implementation
 
 Multiplexers select the first or second adder's magnitude, then choose unshifted or shifted paths for multiplication and division by 2. See the [shift stages](../../calculator/README.md#bit-shift-operations).
 
-## Details to document
+## Planned computer
 
-- Data inputs, select signal, and output in the standalone view
-- Close-up of the installed shift multiplexers
-- Design source for this layout
+In the [Snake computer outline](../../design/README.md#proposed-architecture), multiplexers use rectangular SELECT symbols. They choose the next program-counter value, an ALU operand, and the value written back to the register file. These symbols describe selection functions; they do not prescribe the physical Redstone layout or fix the instruction encoding.

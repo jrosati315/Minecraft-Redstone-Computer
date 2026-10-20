@@ -10,7 +10,7 @@
 
 The purple circuitry decodes four BCD input bits into one of ten digit-selection signals, 0 through 9. The white wiring maps the selected value to the required display segments.
 
-For example, BCD `0101` selects decimal 5, and the segment wiring enables the pattern for 5. Behavior for invalid BCD codes 10 through 15 has not been documented.
+For example, BCD `0101` selects decimal 5, and the segment wiring enables the pattern for 5. The display uses the valid BCD digit codes 0 through 9.
 
 ## Calculator implementation
 
@@ -20,4 +20,4 @@ See the [installed display circuitry](../../calculator/COMPONENTS.md#display-cir
 
 ## Design credit
 
-The builder identifies Mattbatwings' [display-design tutorial at 20:25](https://www.youtube.com/watch?v=mDLfUbAK9T0&t=1225s) as the reference for the binary-to-decimal display design.
+I used Mattbatwings' [display-design tutorial at 20:25](https://www.youtube.com/watch?v=mDLfUbAK9T0&t=1225s) as a reference for the binary-to-decimal display design.

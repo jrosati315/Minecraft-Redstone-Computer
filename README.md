@@ -1,10 +1,10 @@
 # Minecraft Redstone Computer
 
-I'm building a computer in Minecraft using Redstone. The current milestone is a working 8-bit calculator, with a decimal display and binary output. This repository documents the calculator and the standalone logic circuits I've built along the way.
+I'm building a programmable computer in Minecraft using Redstone, with the goal of running Snake on a graphical display with player controls. My first completed project is an 8-bit calculator, built to practice arithmetic logic, binary-to-decimal conversion, and display circuitry before tackling the computer. This repository documents that practice build, the standalone logic circuits I've built along the way, and the planned computer architecture.
 
 [Watch the demonstration](https://youtu.be/XQKjd9Awp-k) · [Download the world](https://github.com/rosatij1/Minecraft-Redstone-Computer/releases/tag/v0.1.0)
 
-## Current build
+## Completed practice build: 8-bit calculator
 
 The calculator accepts two unsigned 8-bit inputs, each from 0 to 255, entered using levers. It supports:
 
@@ -35,6 +35,7 @@ I used WorldEdit to place vanilla blocks and Carpet to accelerate ticks and move
 
 ## Explore the project
 
+- [Snake computer design](design/README.md) — game requirements, CPU structure, storage, and design direction
 - [Calculator](calculator/README.md) — controls and arithmetic, conversion, and display stages
 - [Calculator gallery](calculator/COMPONENTS.md) — circuits installed in the assembled build
 - [Standalone component library](components/README.md) — gates, adders, multiplexers, and display circuits
@@ -42,4 +43,14 @@ I used WorldEdit to place vanilla blocks and Carpet to accelerate ticks and move
 
 ## Next stage
 
-The calculator is a foundation for the larger computer. My next stage is to develop the CPU architecture, memory, instruction set, and control logic, then connect the subsystems. The full computer is in development.
+Snake is the target application guiding the next stage. I'm working backward from movement, food, growth, collision detection, player input, and drawing the game to determine the storage, instructions, and hardware the computer needs.
+
+I'm using Mattbatwings' [Let's Make a Redstone Computer! series](https://www.youtube.com/playlist?list=PL5LiOvrbVo8nPTtdXAdSmDWzu85zzdgRT) as an architectural reference, then adapting the operations, storage, and display interface around Snake.
+
+![Proposed Snake computer architecture showing the CPU, program memory, data storage, player input, and graphical display](design/images/snake-computer-architecture.png)
+
+This is the proposed system outline. The diagram uses a new layout and rectangular selector symbols for multiplexers. Architecture inspiration: Mattbatwings.
+
+The processor will combine a program counter, instruction decoding and control, a register file, an ALU, status flags, and paths for selecting operands and writing results back. Program memory supplies instructions. The reference outline also includes a call stack and data memory; their role and size in my build will follow the game's needs. The display and input controls complete the system.
+
+The [design page](design/README.md) explains the blocks and how they relate to Snake. Word widths, instruction encoding, storage capacity, and screen dimensions are still being designed. The released world contains the completed calculator practice build; Snake and the complete CPU are planned work.

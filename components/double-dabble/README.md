@@ -25,8 +25,3 @@ The Redstone layout implements the stages as combinational circuitry, so a clock
 ## Calculator implementation
 
 Ten whole-number magnitude bits feed the converter, producing thousands, hundreds, tens, and ones. The thousands position can only be 0 or 1 for a ten-bit magnitude. Sign and half-value signals bypass this conversion. See the [calculator description](../../calculator/README.md#binary-to-bcd-conversion).
-
-## Details to document
-
-- Input/output labels and a dedicated installed-converter screenshot
-- Design source for this specific converter layout
